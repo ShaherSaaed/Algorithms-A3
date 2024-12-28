@@ -1,6 +1,5 @@
 #include <iostream>
 #include <vector>
-#include <cmath>
 using namespace std;
 
 int findMinDiff(vector<int>& coins) {
@@ -17,9 +16,9 @@ int findMinDiff(vector<int>& coins) {
 
     for (int i = 1; i <= coins.size(); i++) {
         for (int j = 1; j <= totalSum; j++) {
-            dp[i][j] = dp[i-1][j]; // Don't take current coin
+            dp[i][j] = dp[i-1][j];
             if (j >= coins[i-1]) {
-                dp[i][j] = dp[i][j] || dp[i-1][j-coins[i-1]]; // Take current coin
+                dp[i][j] = dp[i][j] || dp[i-1][j-coins[i-1]];
             }
         }
     }
@@ -30,7 +29,7 @@ int findMinDiff(vector<int>& coins) {
             minDiff = min(minDiff, totalSum - 2*j);
         }
     }
-
+`
     return minDiff;
 }
 
