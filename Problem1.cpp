@@ -9,15 +9,12 @@ int findMinDiff(vector<int>& coins) {
         totalSum += coin;
     }
 
-    // dp[i][j] represents if sum j is possible with first i coins
     vector<vector<bool>> dp(coins.size() + 1, vector<bool>(totalSum + 1, false));
 
-    // Empty subset has sum 0
     for (int i = 0; i <= coins.size(); i++) {
         dp[i][0] = true;
     }
 
-    // Fill dp table
     for (int i = 1; i <= coins.size(); i++) {
         for (int j = 1; j <= totalSum; j++) {
             dp[i][j] = dp[i-1][j]; // Don't take current coin
@@ -27,7 +24,6 @@ int findMinDiff(vector<int>& coins) {
         }
     }
 
-    // Find minimum difference
     int minDiff = totalSum;
     for (int j = 0; j <= totalSum/2; j++) {
         if (dp[coins.size()][j]) {
