@@ -29,7 +29,6 @@ int findMinDiff(vector<int>& coins) {
             minDiff = min(minDiff, totalSum - 2*j);
         }
     }
-`
     return minDiff;
 }
 
